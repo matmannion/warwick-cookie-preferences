@@ -10,4 +10,150 @@
 .apply-brand(#204f79);
 .apply-site-imagery(@basedir: 'images'; @masthead-image: 'masthead-image.png'; @border-image-left: 'border-image-left.png'; @border-image-right: 'border-image-right.png');
 
-// Any changes in here must go via the ITS Web Team, webteam@warwick.ac.uk
+@keyframes slideInUp {
+  from {
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+#cookie-banner {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  z-index: @zindex-navbar-fixed;
+
+  background: @gray-dark;
+  color: white;
+  .header-colour(inherit);
+  .link-colour(inherit);
+  box-shadow: 0 0 25px rgba(0, 0, 0, .1);
+
+  font-size: floor((@font-size-base * 1.1));
+  @media (min-width: @screen-sm-min) {
+    font-size: (@font-size-base * 1.2);
+  }
+
+  animation: slideInUp .4s ease-out;
+
+  // Fix btn-link which uses the default link styling still
+  .btn-link {
+    color: inherit;
+  
+    &:hover, &:focus {
+      color: @gray-lighter;
+      text-decoration: underline;
+      background-color: transparent;
+    }
+    &[disabled], fieldset[disabled] & {
+      &:hover, &:focus {
+        color: @gray-light;
+      }
+    }
+  }
+  
+  > .container {
+    margin: @grid-gutter-width auto;
+    padding: 0 @grid-gutter-width;
+
+    // Vertical centering for the buttons
+    @media (min-width: @screen-sm-min) {
+      html.flexbox & {
+        > .row {
+          display: flex;
+          align-items: center;
+        }
+      }
+    }
+  }
+}
+
+#cookie-modal {
+  fieldset {
+    border-top: 1px solid @gray-light;
+    padding-top: (@line-height-computed / 2);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .switch {
+    display: inline-block;
+    height: auto;
+    font-size: 16px;
+    padding-top: 0.1em;
+  }
+  
+  .switch__length:before, .switch__length:after {
+    transition: 0.4s background ease-in-out;
+    display: block;
+    position: absolute;
+    content: "";
+    left: 0.025em;
+  }
+  
+  .switch__length:before {
+    background-color: #a5a5a5;
+  
+    height: 0.8em;
+    width: 2.25em;
+    border-radius: 0.5em;
+    top: 0.025em;
+    bottom: 0.025em;
+    content: "";
+  }
+  
+  .switch__length:after {
+    bottom: -0.35em;
+    height: 1.375em;
+    margin-left: -0.25em;
+    width: 1.375em;
+    border-radius: 100%;
+    background-color: #ebebeb;
+    box-shadow: 0 0.05em 0.125em rgba(0, 0, 0, 0.5);
+    transition: 0.3s margin ease-in-out, 0.3s background ease-in-out;
+  }
+  
+  .switch__length {
+    width: 2.25em;
+    height: 0.8em;
+    margin-top: -10px;
+    margin-bottom: -10px;
+    margin-right: 0.375em;
+    border-radius: 1.5em;
+    display: block;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .switch__checkbox {
+    visibility: hidden;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+    position: absolute;
+    left: -999999px; // off screen
+  }
+  
+  .switch__checkbox:checked + .switch__length:before {
+    background-color: rgba(91, 48, 105, 0.62);
+  }
+  
+  .switch__checkbox:disabled + .switch__length:before {
+    background-color: rgba(0, 0, 0, 0.12);
+  }
+  
+  .switch__checkbox:checked + .switch__length:after {
+    background-color: #5b3069;
+    margin-left: 1.125em;
+  }
+  
+  .switch__checkbox:disabled + .switch__length:after {
+    background-color: #bdbdbd;
+  }
+}

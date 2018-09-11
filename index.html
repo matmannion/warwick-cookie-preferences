@@ -41,6 +41,7 @@
         <nav class="id7-utility-bar">
           <ul>
             <li><a href="#">Text only</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#cookie-modal">Cookie settings</a></li>
             <li><a href="#">Notify</a></li>
           </ul>
         </nav>
@@ -156,5 +157,109 @@
     </footer>
   </div>
   <div class="id7-right-border"></div>
+
+  <form class="form-inline" action="/cookie-preferences">
+    <aside id="cookie-banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 col-md-8">
+            <h2>Let us know you agree to cookies</h2>
+            <p>We use cookies to give you the best online experience. Please let us know if you agree to essential, functional and marketing cookies.</p>
+          </div>
+          <div class="col-sm-3 col-md-2">
+            <button type="submit" class="btn btn-success btn-block btn-lg"><i class="fa fa-check"></i> Yes, I agree</a>
+          </div>
+          <div class="col-sm-3 col-md-2">
+            <button type="button" class="btn btn-link btn-block btn-lg" data-toggle="modal" data-target="#cookie-modal"><i class="fa fa-cog"></i> Let me choose</button>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="modal fade" id="cookie-modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Choose your cookie preferences</h4>
+          </div>
+          <div class="modal-body">
+            <p>Some essential features on the Warwick sites just won’t work without cookies. And having other cookies switched off can seriously affect the way you’ll be able to enjoy our services.</p>
+
+            <p>Please check your cookie settings below and turn on any cookies you’re happy with.</p>
+
+            <fieldset class="form-group">
+              <div class="media">
+                <div class="media-body">
+                  <h6>Essential cookies</h6>
+                </div>
+              </div>
+
+              <p>These cookies enable core functionality and are set to be on by default, you can disable them through your browser but this may negatively effect your browsing experience.</p>
+            </fieldset>
+
+            <fieldset class="form-group">
+              <div class="media">
+                <div class="media-body">
+                  <h6>Functional cookies</h6>
+                </div>
+                <div class="media-right">
+                  <div class="switch">
+                    <input
+                      type="checkbox"
+                      id="cookie-modal-functional-cookies"
+                      class="switch__checkbox"
+                      name="functional-cookies"
+                      readonly
+                    />
+                    <label
+                      class="switch__length"
+                      for="cookie-modal-functional-cookies"
+                      onClick="function sp(e) { e.stopPropagation(); }"
+                      role="switch"
+                      tabIndex=0
+                    ></label>
+                  </div>
+                </div>
+              </div>
+
+              <p>These cookies allow the website to remember choices you make to give you better functionality and personal features.</p>
+            </fieldset>
+
+            <fieldset class="form-group">
+              <div class="media">
+                <div class="media-body">
+                  <h6>Marketing cookies</h6>
+                </div>
+                <div class="media-right">
+                  <div class="switch">
+                    <input
+                      type="checkbox"
+                      id="cookie-modal-marketing-cookies"
+                      class="switch__checkbox"
+                      name="marketing-cookies"
+                      readonly
+                    />
+                    <label
+                      class="switch__length"
+                      for="cookie-modal-marketing-cookies"
+                      onClick="function sp(e) { e.stopPropagation(); }"
+                      role="switch"
+                      tabIndex=0
+                    ></label>
+                  </div>
+                </div>
+              </div>
+
+              <p>These cookies allow us to understand whether our marketing campaigns are working by building a profile of your interests. They allow us to count visits and traffic sources, so we can measure and improve the performance of our site by understanding what is working well.</p>
+            </fieldset>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Save settings</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+  </form>
 </body>
 </html>
